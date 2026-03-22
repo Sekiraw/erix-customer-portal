@@ -1,0 +1,50 @@
+/* Map Payload's theme-elevation to our design system (loads after Payload CSS) */
+:root {
+  --theme-elevation-0: var(--surface);
+  --theme-elevation-50: var(--surface-hover);
+  --theme-elevation-100: var(--surface);
+  --theme-elevation-150: var(--surface-hover);
+  --theme-elevation-200: var(--border);
+  --theme-elevation-250: var(--border-hover);
+  --theme-elevation-300: var(--text-tertiary);
+  --theme-elevation-350: var(--text-tertiary);
+  --theme-elevation-400: var(--text-secondary);
+  --theme-elevation-450: var(--text-secondary);
+  --theme-elevation-500: var(--text-tertiary);
+  --theme-elevation-550: var(--text-secondary);
+  --theme-elevation-600: var(--text-secondary);
+  --theme-elevation-650: var(--text-primary);
+  --theme-elevation-700: var(--text-secondary);
+  --theme-elevation-750: var(--text-primary);
+  --theme-elevation-800: var(--text-primary);
+  --theme-elevation-850: var(--text-primary);
+  --theme-elevation-900: var(--sidebar-bg);
+  --theme-elevation-950: var(--sidebar-bg);
+
+  --theme-bg: var(--bg);
+  --theme-input-bg: var(--surface);
+  --theme-text: var(--text-primary);
+  --theme-overlay: rgba(5, 5, 5, 0.5);
+  --font-body: 'Satoshi', system-ui, -apple-system, sans-serif;
+  --font-mono: monospace;
+  --font-serif: 'Merriweather', serif;
+  --style-radius-s: var(--radius-xs);
+  --style-radius-m: var(--radius-sm);
+  --style-radius-l: var(--radius-md);
+  --nav-width: 260px;
+}
+
+html[data-theme='dark'] {
+  --theme-elevation-0: var(--surface);
+  --theme-elevation-50: var(--surface-hover);
+  --theme-elevation-100: var(--surface);
+  --theme-elevation-150: var(--surface-hover);
+  --theme-elevation-200: var(--border);
+  --theme-elevation-500: var(--text-tertiary);
+  --theme-elevation-700: var(--text-secondary);
+  --theme-elevation-800: var(--text-primary);
+  --theme-elevation-900: var(--sidebar-bg);
+}
+
+/* Support Payload's dark mode toggle */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

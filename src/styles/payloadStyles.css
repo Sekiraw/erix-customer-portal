@@ -1,0 +1,16 @@
+/* src/styles/payloadStyles.css — Payload admin overrides using CRM design tokens */
+
+/* Import all component-specific styles */
+@import './payload/01-theme-variables.css';
+@import './payload/02-body-globals.css';
+@import './payload/03-sidebar.css';
+@import './payload/04-layout.css';
+@import './payload/05-dashboard.css';
+@import './payload/06-view-switchers.css';
+@import './payload/07-headers.css';
+@import './payload/08-collection-lists.css';
+@import './payload/09-calendar.css';
+@import './payload/10-payload-overrides.css';
+@import './payload/11-form-fields.css';
+@import './payload/12-date-picker.css';
+@import './payload/13-settings.css';

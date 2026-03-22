@@ -1,0 +1,16 @@
+/* CRM Admin Layout */
+body {
+  font-family:
+    'Satoshi',
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}

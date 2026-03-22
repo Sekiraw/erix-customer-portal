@@ -1,0 +1,36 @@
+/* Collection View Switcher (shared by Events, Tasks, etc.) */
+.collection-view-switcher {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.collection-view-switcher__option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: var(--transition);
+  border-bottom: 2px solid transparent;
+}
+.collection-view-switcher__option:hover {
+  color: var(--text-primary);
+}
+.collection-view-switcher__option--active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.collection-view-switcher__option--active:hover {
+  color: var(--accent);
+}
+.collection-view-switcher__icon {
+  width: 18px;
+  height: 18px;
+  color: inherit;
+}
+.collection-view-switcher__label {
+  white-space: nowrap;
+}

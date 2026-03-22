@@ -1,0 +1,158 @@
+/* Tasks View & List View (CRM design) */
+.tasks-view {
+  position: relative;
+}
+
+/* Collection list view overrides */
+.template-default__wrap .collection-list,
+.tasks-view .collection-list {
+  background: var(--bg);
+}
+.template-default__wrap .list-header,
+.tasks-view .list-header {
+  background: transparent;
+  padding: 0 0 24px;
+  border: none;
+}
+/* List header: align title and create button vertically */
+.list-header__title-and-actions {
+  display: flex !important;
+  align-items: center !important;
+  margin-top: 16px;
+  gap: 16px;
+  min-height: 32px;
+  flex: 1;
+}
+.template-default__wrap .list-header__title,
+.tasks-view .list-header__title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  font-family: 'Satoshi', system-ui, sans-serif;
+  margin: 0;
+  line-height: 1.2;
+}
+.list-header__title-actions {
+  display: flex !important;
+  align-items: center !important;
+  align-self: center !important;
+  margin-left: auto;
+}
+.template-default__wrap .list-header__content,
+.tasks-view .list-header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  /* gap: 16px; */
+}
+.template-default__wrap .list-header__actions,
+.tasks-view .list-header__actions {
+  margin-right: 0;
+}
+.template-default__wrap .list-controls__wrap,
+.tasks-view .list-controls__wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+.template-default__wrap .search-filter__input,
+.tasks-view .search-filter__input {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  background: var(--surface);
+  padding: 8px 34px;
+  font-size: 14px;
+  transition: var(--transition);
+}
+.template-default__wrap .search-filter__input:focus,
+.tasks-view .search-filter__input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+.template-default__wrap .list-controls__wrap .btn,
+.tasks-view .list-controls__wrap .btn {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-size: 13px;
+  padding: 8px 14px;
+  transition: var(--transition);
+}
+.template-default__wrap .list-controls__wrap .btn:hover,
+.tasks-view .list-controls__wrap .btn:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+}
+.list-controls {
+  margin-top: 20px;
+}
+.template-default__wrap .collection-list__wrap,
+.tasks-view .collection-list__wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.template-default__wrap .collection-list__wrap table,
+.tasks-view .collection-list__wrap table {
+  font-size: 14px;
+}
+.template-default__wrap .collection-list__wrap th,
+.tasks-view .collection-list__wrap th {
+  background: var(--surface-hover);
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.template-default__wrap .collection-list__wrap td,
+.tasks-view .collection-list__wrap td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.template-default__wrap .collection-list__wrap a,
+.tasks-view .collection-list__wrap a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.template-default__wrap .collection-list__wrap a:hover,
+.tasks-view .collection-list__wrap a:hover {
+  color: var(--accent-hover);
+}
+.template-default__wrap .list-create-new-doc,
+.tasks-view .list-create-new-doc {
+  margin-top: 24px;
+}
+.template-default__wrap .list-create-new-doc__create-new-button,
+.template-default__wrap .btn--style-pill,
+.tasks-view .list-create-new-doc__create-new-button,
+.tasks-view .btn--style-pill {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius-xs) !important;
+  padding: 10px 18px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: var(--transition) !important;
+}
+.template-default__wrap .list-create-new-doc__create-new-button:hover,
+.template-default__wrap .btn--style-pill:hover,
+.tasks-view .list-create-new-doc__create-new-button:hover,
+.tasks-view .btn--style-pill:hover {
+  background: var(--accent-hover) !important;
+}
+.template-default__wrap .no-results,
+.tasks-view .no-results {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}

@@ -1,0 +1,45 @@
+# Base config. Staging and production both use this server (single VM).
+# In CI, SERVER_IP is set from GitHub secret SERVER_IP. Locally: export SERVER_IP=1.2.3.4
+service: crm-app
+image: ghcr.io/<%= ENV['GITHUB_REPOSITORY_OWNER'] || ENV['KAMAL_REGISTRY_USERNAME'] || 'your-github-username' %>/crm-app
+servers:
+  web:
+    hosts:
+      - "<%= ENV.fetch('SERVER_IP', '').strip %>"
+registry:
+  server: ghcr.io
+  username: <%= ENV['KAMAL_REGISTRY_USERNAME'] || ENV['GITHUB_ACTOR'] || 'your-github-username' %>
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+env:
+  clear:
+    NODE_ENV: production
+  secret:
+    - DATABASE_URI
+    - PAYLOAD_SECRET
+proxy:
+  host: your-domain.com
+  app_port: 3000
+  ssl: true
+  forward_headers: true
+  healthcheck:
+    path: /
+    interval: 5
+    timeout: 5
+volumes:
+  - cms-media:/app/media
+accessories:
+  postgres:
+    image: postgres:16-alpine
+    host: "<%= ENV.fetch('SERVER_IP', '').strip %>"
+    port: '127.0.0.1:5432:5432'
+    env:
+      clear:
+        POSTGRES_USER: payload
+        POSTGRES_DB: crm_db
+      secret:
+        - POSTGRES_PASSWORD
+    directories:
+      - postgres-data:/var/lib/postgresql/data
+builder:
+  arch: amd64

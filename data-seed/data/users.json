@@ -1,0 +1,116 @@
+[
+  {
+    "email": "andor.abraham@whizystems.com",
+    "password": "admin",
+    "firstName": "Andor",
+    "lastName": "Ábrahám"
+  },
+  {
+    "email": "balazs.szabo@whizystems.com",
+    "password": "admin",
+    "firstName": "Balázs",
+    "lastName": "Szabó"
+  },
+  {
+    "email": "bence.kiss@whizystems.com",
+    "password": "admin",
+    "firstName": "Bence",
+    "lastName": "Kiss"
+  },
+  {
+    "email": "botond.suge@whizystems.com",
+    "password": "admin",
+    "firstName": "Botond",
+    "lastName": "Süge"
+  },
+  {
+    "email": "david.laszlo@whizystems.com",
+    "password": "admin",
+    "firstName": "Dávid",
+    "lastName": "László"
+  },
+  {
+    "email": "david.nagy@whizystems.com",
+    "password": "admin",
+    "firstName": "Dávid",
+    "lastName": "Nagy"
+  },
+  {
+    "email": "erik.varnagy@whizystems.com",
+    "password": "admin",
+    "firstName": "Erik",
+    "lastName": "Várnagy"
+  },
+  {
+    "email": "david.terhes@whizystems.com",
+    "password": "admin",
+    "firstName": "Dávid",
+    "lastName": "Terhes"
+  },
+  {
+    "email": "hajnalka.bonacz@whizystems.com",
+    "password": "admin",
+    "firstName": "Hajnalka",
+    "lastName": "Bónácz"
+  },
+  {
+    "email": "istvan.kersmajer@whizystems.com",
+    "password": "admin",
+    "firstName": "István",
+    "lastName": "Kersmájer"
+  },
+  {
+    "email": "mark.marosi@whizystems.com",
+    "password": "admin",
+    "firstName": "Márk",
+    "lastName": "Marosi"
+  },
+  {
+    "email": "marton.nemeth@whizystems.com",
+    "password": "admin",
+    "firstName": "Márton",
+    "lastName": "Németh"
+  },
+  {
+    "email": "meli.janurikne@whizystems.com",
+    "password": "admin",
+    "firstName": "Melinda",
+    "lastName": "Janurikné"
+  },
+  {
+    "email": "norbert.racz@whizystems.com",
+    "password": "admin",
+    "firstName": "Norbert",
+    "lastName": "Rácz"
+  },
+  {
+    "email": "patrik.gal@whizystems.com",
+    "password": "admin",
+    "firstName": "Patrik",
+    "lastName": "Gál"
+  },
+  {
+    "email": "peter.bohus@whizystems.com",
+    "password": "admin",
+    "firstName": "Péter",
+    "lastName": "Bohus"
+  },
+  {
+    "email": "richard.gyiko@whizystems.com",
+    "password": "admin",
+    "firstName": "Richárd",
+    "lastName": "Gyikó"
+  },
+  {
+    "email": "tamas.bito@whizystems.com",
+    "password": "admin",
+    "firstName": "Tamás",
+    "lastName": "Bitó"
+  },
+  {
+    "email": "viktor.janurik@whizystems.com",
+    "password": "admin",
+    "firstName": "Viktor",
+    "lastName": "Janurik"
+  }
+]

@@ -1,0 +1,123 @@
+/* Events Header & View Switcher */
+.events-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.events-header__left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.events-header__title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  font-family: 'Satoshi', system-ui, sans-serif;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.events-header__create-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background: var(--accent);
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  transition: var(--transition);
+  width: fit-content;
+}
+
+.events-header__create-btn:hover {
+  background: var(--accent-hover);
+  color: #fff;
+}
+
+.events-header__create-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.events-header__right {
+  display: flex;
+  align-items: center;
+}
+
+/* Tasks Header (same layout as Events) */
+.tasks-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.tasks-header__left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tasks-header__title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  font-family: 'Satoshi', system-ui, sans-serif;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.tasks-header__create-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background: var(--accent);
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  transition: var(--transition);
+  width: fit-content;
+}
+
+.tasks-header__create-btn:hover {
+  background: var(--accent-hover);
+  color: #fff;
+}
+
+.tasks-header__create-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.tasks-header__right {
+  display: flex;
+  align-items: center;
+}
+
+/* Hide default list header when using custom header */
+.events-view .list-header,
+.tasks-view .list-header {
+  display: none;
+}
+
+.app-header {
+  margin-top: 16px;
+}

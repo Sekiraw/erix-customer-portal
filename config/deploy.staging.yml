@@ -1,0 +1,21 @@
+# Staging on the same VM as production. Distinct service name and data dir avoid conflicts.
+# Server IP is taken from base config (deploy.yml); set via SERVER_IP in repo or CI secret.
+
+service: crm-app-staging
+
+proxy:
+  host: crm-staging.whizystems.com
+  app_port: 3000
+  ssl: true
+  forward_headers: true
+  healthcheck:
+    path: /
+    interval: 5
+    timeout: 5
+
+# Separate Postgres data dir and host port so staging does not clash with production on the same VM.
+accessories:
+  postgres:
+    port: '127.0.0.1:5432:5432'
+    directories:
+      - postgres-staging-data:/var/lib/postgresql/data

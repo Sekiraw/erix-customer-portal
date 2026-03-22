@@ -1,0 +1,25 @@
+/* EventDateRangeField: fix icon-wrap centering in custom button */
+.event-date-picker .date-time-picker {
+  position: relative;
+}
+.event-date-picker .date-time-picker__icon-wrap {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-right: 8px;
+}
+.event-date-picker .date-time-picker__clear-button,
+.event-date-picker .date-time-picker .icon--calendar {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+}
+
+.time-input::-webkit-calendar-picker-indicator {
+  display: none;
+}

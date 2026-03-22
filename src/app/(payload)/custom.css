@@ -1,0 +1,265 @@
+@import url('https://cdn.jsdelivr.net/gh/nicehash/satoshi@latest/satoshi.css');
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is([data-theme='dark'] *));
+
+/* ─── CRM Design System ─────────────────────────────────────────────────── */
+:root {
+  /* Core layout & surfaces */
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --surface-hover: #f0f0f2;
+  --sidebar-bg: #0f1117;
+  --sidebar-text: #8a8d98;
+  --sidebar-text-active: #ffffff;
+
+  /* Text hierarchy */
+  --text-primary: #1a1a2e;
+  --text-secondary: #6b7084;
+  --text-tertiary: #a0a4b8;
+
+  /* Borders */
+  --border: rgba(0, 0, 0, 0.06);
+  --border-hover: rgba(0, 0, 0, 0.12);
+
+  /* Accent (blue) */
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --accent-text: #1e40af;
+  --accent-hover: #60a5fa;
+
+  /* Semantic colors */
+  --success-light: #ecfdf5;
+  --success-text: #065f46;
+  --danger: #e24b4a;
+  --danger-light: #fef2f2;
+  --danger-hover: #f09595;
+  --warning: #d97706;
+  --info-light: #eff6ff;
+  --info-text: #1e40af;
+  --coral: #f07b5a;
+  --coral-light: #fff3ee;
+  --coral-text: #993c1d;
+  --warning-light: #fffbeb;
+  --warning-text: #854f0b;
+  --pink-light: #fdf2f8;
+  --pink-text: #9d174d;
+  --teal-light: #f0fdfa;
+  --teal-text: #0f766e;
+
+  /* Radius tokens */
+  --radius-xs: 7px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-full: 9999px;
+
+  /* Effects */
+  --shadow-card-hover: 0 2px 8px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Base radius (for calc) */
+  --radius: 0.625rem;
+
+  /* Legacy / Tailwind compatibility */
+  --background: var(--bg);
+  --foreground: var(--text-primary);
+  --card: var(--surface);
+  --card-foreground: var(--text-primary);
+  --primary: var(--text-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--surface-hover);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--surface-hover);
+  --muted-foreground: var(--text-tertiary);
+  --accent-foreground: #ffffff;
+  --destructive: var(--danger);
+  --input: var(--surface);
+  --ring: var(--accent);
+  --popover: var(--surface);
+  --popover-foreground: var(--text-primary);
+
+  /* Chart colors */
+  --chart-1: var(--accent);
+  --chart-2: var(--coral);
+  --chart-3: hsl(216, 100%, 50%);
+  --chart-4: hsl(255.09, 100%, 67.25%);
+  --chart-5: var(--danger);
+
+  /* Sidebar (admin nav) */
+  --sidebar: var(--sidebar-bg);
+  --sidebar-foreground: var(--sidebar-text-active);
+  --sidebar-primary: var(--accent);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(255, 255, 255, 0.06);
+  --sidebar-accent-foreground: var(--sidebar-text-active);
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --sidebar-ring: var(--accent);
+
+  /* Task status */
+  --new: hsl(0, 0%, 100%);
+  --in-progress: hsl(213.33, 100%, 96.47%);
+  --delayed: hsl(18, 100%, 96.08%);
+  --done: hsl(150, 100%, 96.47%);
+  --closed: hsl(0, 0%, 95.29%);
+}
+
+[data-theme='dark'] {
+  --bg: #0f1117;
+  --surface: #1a1d24;
+  --surface-hover: #252830;
+  --sidebar-bg: #0a0c10;
+  --sidebar-text: #8a8d98;
+  --sidebar-text-active: #ffffff;
+  --text-primary: #f5f5f7;
+  --text-secondary: #a0a4b8;
+  --text-tertiary: #6b7084;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.15);
+  --accent: #60a5fa;
+  --accent-light: rgba(96, 165, 250, 0.15);
+  --accent-text: #93c5fd;
+  --accent-hover: #93c5fd;
+  --background: var(--bg);
+  --foreground: var(--text-primary);
+  --card: var(--surface);
+  --card-foreground: var(--text-primary);
+  --primary: var(--accent);
+  --primary-foreground: #0f1117;
+  --secondary: var(--surface-hover);
+  --muted: var(--surface-hover);
+  --muted-foreground: var(--text-tertiary);
+  --sidebar: var(--sidebar-bg);
+  --sidebar-foreground: var(--sidebar-text-active);
+  --sidebar-accent: rgba(255, 255, 255, 0.08);
+  --shadow-card-hover: 0 2px 8px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Tailwind @theme — design tokens as utilities */
+@theme inline {
+  --radius-xs: 7px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-sidebar-text: var(--sidebar-text);
+  --color-sidebar-text-active: var(--sidebar-text-active);
+  --color-text-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-tertiary: var(--text-tertiary);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-text: var(--accent-text);
+  --color-accent-hover: var(--accent-hover);
+  --color-success-light: var(--success-light);
+  --color-success-text: var(--success-text);
+  --color-danger: var(--danger);
+  --color-danger-hover: var(--danger-hover);
+  --color-info-light: var(--info-light);
+  --color-info-text: var(--info-text);
+  --color-coral: var(--coral);
+  --color-coral-light: var(--coral-light);
+  --color-coral-text: var(--coral-text);
+  --color-warning-light: var(--warning-light);
+  --color-warning-text: var(--warning-text);
+  --color-pink-light: var(--pink-light);
+  --color-pink-text: var(--pink-text);
+  --color-teal-light: var(--teal-light);
+  --color-teal-text: var(--teal-text);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--text-primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-new: var(--new);
+  --color-in-progress: var(--in-progress);
+  --color-delayed: var(--delayed);
+  --color-done: var(--done);
+  --color-closed: var(--closed);
+
+  --animate-fade-up: fadeUp 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer theme {
+  @import 'tailwindcss/theme.css';
+}
+
+@layer base {
+  body {
+    font-family:
+      'Satoshi',
+      system-ui,
+      -apple-system,
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .twp {
+    @import 'tailwindcss/preflight.css';
+
+    * {
+      @apply border-border outline-ring/50;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+  }
+
+  .twp.no-twp {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+      all: revert-layer;
+    }
+  }
+}
+
+@layer components;
+
+@layer utilities {
+  @import 'tailwindcss/utilities.css';
+}

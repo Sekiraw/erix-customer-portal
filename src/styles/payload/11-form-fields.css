@@ -1,0 +1,35 @@
+label.field-label:not(.document-fields__sidebar-fields *):not(.collapsible__content *) {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-bottom: 4px;
+  font-family: 'Satoshi', system-ui, sans-serif;
+}
+
+.document-fields__sidebar-fields label.field-label {
+  font-weight: 600;
+}
+
+.doc-header__title {
+  line-height: 42px;
+  font-family: 'Satoshi', system-ui, sans-serif;
+}
+
+.field-type {
+  margin-bottom: 16px;
+}
+
+.collections > .collections__wrap > .collections__group > .collections__label {
+  display: none;
+}
+
+.collection-list .gutter {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+}
+
+.list-create-new-doc__create-new-button .btn__content .btn__label {
+  line-height: 10px;
+}

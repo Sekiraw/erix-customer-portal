@@ -1,0 +1,58 @@
+/* Main content shift when sidebar is present */
+.template-default__wrap {
+  margin-left: 260px;
+  min-height: 100vh;
+  width: calc(100vw - 260px) !important;
+  max-width: none !important;
+  box-sizing: border-box;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+body:has(.crm-sidebar--collapsed) .template-default__wrap {
+  margin-left: 72px;
+  width: calc(100vw - 72px) !important;
+}
+
+.template-default__wrap .collection-list {
+  padding-left: 58px;
+  padding-right: 58px;
+}
+
+/* Force collection list to take full width (fix narrow ~40px bug) */
+.template-default__wrap .document-fields,
+.template-default__wrap .document-fields__wrap,
+.template-default__wrap .document-fields__main,
+.template-default__wrap .collections,
+.template-default__wrap .collections__wrap,
+.template-default__wrap .collection-list,
+.template-default__wrap .collection-list__wrap {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  flex: 1 1 0 !important;
+}
+.template-default__wrap .collection-list__wrap table {
+  width: 100% !important;
+}
+
+/* Mobile behavior */
+@media (max-width: 768px) {
+  /* Reduce horizontal padding on narrow screens */
+  .template-default__wrap .document-fields,
+  .template-default__wrap .document-fields__wrap,
+  .template-default__wrap .document-fields__main,
+  .template-default__wrap .collections,
+  .template-default__wrap .collections__wrap,
+  .template-default__wrap .collection-list,
+  .template-default__wrap .collection-list__wrap {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .collection-list__wrap table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-collapse: collapse;
+  }
+}
