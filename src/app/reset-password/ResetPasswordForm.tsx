@@ -3,6 +3,7 @@
 import React, { useActionState, useState } from 'react'
 import { useFormStatus } from 'react-dom'
 import { resetPasswordAction, type ResetPasswordState } from './actions'
+import PasswordStrengthBar, { getStrength } from '@/components/PasswordStrengthBar'
 
 type Lang = 'en' | 'hu'
 
@@ -11,36 +12,18 @@ const labels = {
   confirm: { en: 'Confirm password', hu: 'Jelszó megerősítése' },
   submit: { en: 'Set new password', hu: 'Jelszó beállítása' },
   submitPending: { en: 'Saving...', hu: 'Mentés...' },
-  strength: {
-    weak: { en: 'Weak', hu: 'Gyenge' },
-    fair: { en: 'Fair', hu: 'Közepes' },
-    good: { en: 'Good', hu: 'Jó' },
-    strong: { en: 'Strong', hu: 'Erős' },
-  },
   rules: {
-    en: 'At least 8 characters, one uppercase letter, one number.',
-    hu: 'Legalább 8 karakter, egy nagybetű, egy szám.',
+    en: 'At least 8 characters, one uppercase letter, one lowercase letter, one number, one special character.',
+    hu: 'Legalább 8 karakter, egy nagybetű, egy kisbetű, egy szám, egy speciális karakter.',
   },
 }
 
-function getStrength(pw: string): 0 | 1 | 2 | 3 | 4 {
-  let score = 0
-  if (pw.length >= 8) score++
-  if (/[A-Z]/.test(pw)) score++
-  if (/[0-9]/.test(pw)) score++
-  if (/[^A-Za-z0-9]/.test(pw)) score++
-  return score as 0 | 1 | 2 | 3 | 4
-}
-
-const strengthColors = ['bg-gray-200', 'bg-red-400', 'bg-orange-400', 'bg-yellow-400', 'bg-green-500']
-const strengthLabels: Array<keyof typeof labels.strength> = ['weak', 'weak', 'fair', 'good', 'strong']
-
-function SubmitButton({ label, pendingLabel }: { label: string; pendingLabel: string }) {
+function SubmitButton({ label, pendingLabel, disabled }: { label: string; pendingLabel: string; disabled?: boolean }) {
   const { pending } = useFormStatus()
   return (
     <button
       type="submit"
-      disabled={pending}
+      disabled={pending || disabled}
       className="inline-flex w-full hover:cursor-pointer items-center justify-center px-4 py-3 rounded-md bg-chart-3 text-white font-semibold border border-chart-3 transition-colors disabled:opacity-60 disabled:cursor-not-allowed hover:bg-chart-3/90"
     >
       {pending ? pendingLabel : label}
@@ -74,19 +57,7 @@ export default function ResetPasswordForm({ lang, token }: { lang: Lang; token: 
         />
 
         {password.length > 0 && (
-          <div className="flex flex-col gap-1">
-            <div className="flex gap-1 h-1.5">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className={`flex-1 rounded-full transition-colors ${i <= strength ? strengthColors[strength] : 'bg-gray-200'}`}
-                />
-              ))}
-            </div>
-            <span className="text-xs text-black/60">
-              {labels.strength[strengthLabels[strength]][lang]}
-            </span>
-          </div>
+          <PasswordStrengthBar strength={strength} lang={lang} />
         )}
 
         <p className="text-xs text-black/50">{labels.rules[lang]}</p>
@@ -108,7 +79,7 @@ export default function ResetPasswordForm({ lang, token }: { lang: Lang; token: 
 
       {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
 
-      <SubmitButton label={labels.submit[lang]} pendingLabel={labels.submitPending[lang]} />
+      <SubmitButton label={labels.submit[lang]} pendingLabel={labels.submitPending[lang]} disabled={strength < 5} />
     </form>
   )
 }

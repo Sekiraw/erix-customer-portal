@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation'
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import { sendPasswordResetSuccessEmail } from '@/lib/email/service'
 
 export type ResetPasswordState = {
   error?: string
@@ -55,6 +56,12 @@ export async function resetPasswordAction(
     id: user.id,
     data: { resetPasswordTokenExpiresAt: null } as never,
     overrideAccess: true,
+  })
+
+  void sendPasswordResetSuccessEmail({
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
   })
 
   redirect('/login?passwordReset=1')

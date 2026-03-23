@@ -135,6 +135,7 @@ export interface User {
   failedLoginAttempts?: number | null;
   lastFailedLoginAt?: string | null;
   resetPasswordTokenExpiresAt?: string | null;
+  lastPasswordResetRequestAt?: string | null;
   twoFactorEnabled?: boolean | null;
   twoFactorSecret?: string | null;
   updatedAt: string;
@@ -283,6 +284,7 @@ export interface UsersSelect<T extends boolean = true> {
   failedLoginAttempts?: T;
   lastFailedLoginAt?: T;
   resetPasswordTokenExpiresAt?: T;
+  lastPasswordResetRequestAt?: T;
   twoFactorEnabled?: T;
   twoFactorSecret?: T;
   updatedAt?: T;

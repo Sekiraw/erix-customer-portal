@@ -3,6 +3,7 @@
 import React, { useActionState, useState } from 'react'
 import { useFormStatus } from 'react-dom'
 import { registerAction, type RegisterState } from './actions'
+import PasswordStrengthBar, { getStrength, passwordRules } from '@/components/PasswordStrengthBar'
 
 const initialState: RegisterState = {}
 
@@ -26,43 +27,13 @@ const labels = {
   },
 } as const
 
-const passwordRules = [
-  {
-    key: 'min8',
-    test: (p: string) => p.length >= 8,
-    label: { en: 'At least 8 characters', hu: 'Legalább 8 karakter' },
-  },
-  {
-    key: 'uppercase',
-    test: (p: string) => /[A-Z]/.test(p),
-    label: { en: 'At least one uppercase letter', hu: 'Legalább egy nagybetű' },
-  },
-  {
-    key: 'lowercase',
-    test: (p: string) => /[a-z]/.test(p),
-    label: { en: 'At least one lowercase letter', hu: 'Legalább egy kisbetű' },
-  },
-  {
-    key: 'number',
-    test: (p: string) => /[0-9]/.test(p),
-    label: { en: 'At least one number', hu: 'Legalább egy szám' },
-  },
-  {
-    key: 'special',
-    test: (p: string) => /[^A-Za-z0-9]/.test(p),
-    label: {
-      en: 'At least one special character',
-      hu: 'Legalább egy speciális karakter',
-    },
-  },
-] as const
 
-function SubmitButton({ label, pendingLabel }: { label: string; pendingLabel: string }) {
+function SubmitButton({ label, pendingLabel, disabled }: { label: string; pendingLabel: string; disabled?: boolean }) {
   const { pending } = useFormStatus()
   return (
     <button
       type="submit"
-      disabled={pending}
+      disabled={pending || disabled}
       className="inline-flex w-full hover:cursor-pointer items-center justify-center px-4 py-3 rounded-md bg-chart-3 text-white font-semibold border border-chart-3 transition-colors disabled:opacity-60 disabled:cursor-not-allowed hover:bg-chart-3/90"
     >
       {pending ? pendingLabel : label}
@@ -75,6 +46,7 @@ export default function RegisterForm({ lang }: { lang: Lang }) {
   const [state, formAction] = useActionState(registerAction, initialState)
   const [password, setPassword] = useState('')
   const [passwordTouched, setPasswordTouched] = useState(false)
+  const strength = getStrength(password)
 
   const inputClass =
     'h-12 text-base text-black w-full px-3 rounded-md border border-border bg-input'
@@ -142,6 +114,9 @@ export default function RegisterForm({ lang }: { lang: Lang }) {
           onBlur={() => setPasswordTouched(true)}
           className={inputClass}
         />
+        {password.length > 0 && (
+          <PasswordStrengthBar strength={strength} lang={lang} />
+        )}
         {/* Live password requirements */}
         {(passwordTouched || password.length > 0) && (
           <ul className="mt-1 flex flex-col gap-1">
@@ -195,7 +170,7 @@ export default function RegisterForm({ lang }: { lang: Lang }) {
       {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
 
       <div className="flex w-full">
-        <SubmitButton label={labels.submit[lang]} pendingLabel={labels.submitPending[lang]} />
+        <SubmitButton label={labels.submit[lang]} pendingLabel={labels.submitPending[lang]} disabled={strength < 5} />
       </div>
     </form>
   )

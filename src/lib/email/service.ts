@@ -2,6 +2,7 @@ import { sendEmail } from './client'
 import {
   failedLoginAttemptsTemplate,
   passwordResetTemplate,
+  passwordResetSuccessTemplate,
   registrationConfirmationTemplate,
   registrationSuccessTemplate,
   staffNewUserNotificationTemplate,
@@ -61,6 +62,14 @@ export async function sendFailedLoginAttemptsEmail(
  */
 export async function sendPasswordResetEmail(user: UserData, resetUrl: string): Promise<void> {
   const { subject, html } = passwordResetTemplate(user, resetUrl)
+  await sendEmail({ to: user.email, subject, html })
+}
+
+/**
+ * Confirms to the user that their password was successfully changed.
+ */
+export async function sendPasswordResetSuccessEmail(user: UserData): Promise<void> {
+  const { subject, html } = passwordResetSuccessTemplate(user)
   await sendEmail({ to: user.email, subject, html })
 }
 

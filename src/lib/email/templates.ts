@@ -217,6 +217,32 @@ export function passwordResetTemplate(
 }
 
 /**
+ * Password reset success — sent after the user successfully changes their password.
+ */
+export function passwordResetSuccessTemplate(user: UserData): { subject: string; html: string } {
+  const appUrl = process.env.APP_URL ?? '#'
+
+  const html = layout(
+    'Jelszó sikeresen megváltoztatva',
+    [
+      h1('Jelszava megváltozott'),
+      p(`Kedves <strong>${user.lastName} ${user.firstName}</strong>,`),
+      p(
+        'Értesítjük, hogy fiókja jelszava sikeresen megváltoztatásra került. ' +
+          'Most már bejelentkezhet az új jelszavával.',
+      ),
+      button('Bejelentkezés', `${appUrl}/login`),
+      p(
+        'Ha nem Ön változtatta meg a jelszavát, kérjük, azonnal lépjen kapcsolatba velünk, ' +
+          'mivel fiókja illetéktelen hozzáférés célpontja lehet.',
+      ),
+    ].join(''),
+  )
+
+  return { subject: 'Jelszó megváltoztatva — Customer Portal', html }
+}
+
+/**
  * Staff notification — sent to every employee / manager / IT staff.
  */
 export function staffNewUserNotificationTemplate(

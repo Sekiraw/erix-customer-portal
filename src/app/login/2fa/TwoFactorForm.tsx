@@ -52,6 +52,7 @@ export default function TwoFactorForm({ lang }: { lang: Lang }) {
           required
           autoComplete="one-time-code"
           autoFocus
+          placeholder='000000'
           className="h-12 text-center text-2xl font-mono tracking-widest text-black w-full px-3 rounded-md border border-border bg-input"
         />
       </div>

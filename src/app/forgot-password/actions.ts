@@ -32,6 +32,14 @@ export async function forgotPasswordAction(
 
   const user = docs[0]!
 
+  // Rate limit: allow at most one reset request per email per 5 minutes
+  const lastRequest = user.lastPasswordResetRequestAt
+    ? new Date(user.lastPasswordResetRequestAt as string)
+    : null
+  if (lastRequest && Date.now() - lastRequest.getTime() < 5 * 60 * 1000) {
+    return { success: true }
+  }
+
   const token = crypto.randomBytes(32).toString('hex')
   const expiresAt = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 
@@ -43,6 +51,7 @@ export async function forgotPasswordAction(
       resetPasswordTokenExpiresAt: expiresAt.toISOString(),
       // Also set Payload's internal expiry field so payload.resetPassword() validates correctly
       resetPasswordExpiration: expiresAt.toISOString(),
+      lastPasswordResetRequestAt: new Date().toISOString(),
     } as never,
     overrideAccess: true,
   })
